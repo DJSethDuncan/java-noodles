@@ -3,8 +3,10 @@ import java.util.Scanner;
 class HelloWorld {
   public static void main(String[] arguments) {
     showGreeting(true);
-    String userName = getUsername();
-    System.out.println("Hello, " + userName);
+    String userName = getInput("UserName:");
+    output("Hello, " + userName + ". What can I do for you today?", true);
+    String command = getInput("CMD:>");
+    processCommand(command);
   }
 
   static void showGreeting(Boolean firstVisit) {
@@ -14,12 +16,31 @@ class HelloWorld {
     else
       welcomeText = "Welcome back, friendo";
 
-    System.out.println(welcomeText);
+    output(welcomeText, true);
   }
 
-  static String getUsername() {
+  static String getInput(String prompt) {
     Scanner scnr = new Scanner(System.in);
-    System.out.print("Username: ");
+    output(prompt + " ", false);
     return scnr.nextLine();
   }
+
+  static void processCommand(String command) {
+    switch (command) {
+      case "help":
+        output("Help yourself.", true);
+        break;
+      default:
+        output("I don't know what you mean.", true);
+        break;
+    }
+  }
+
+  static void output(String text, Boolean newLine) {
+    if (newLine)
+      System.out.println(text);
+    else
+      System.out.print(text);
+  }
+
 }
