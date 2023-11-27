@@ -8,6 +8,7 @@ class HelloWorld {
     String command;
     do {
       command = getInput("CMD:>");
+      command = command.toLowerCase();
       processCommand(command, userName);
     }
     while (!command.equals("quit"));
