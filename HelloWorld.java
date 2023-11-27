@@ -35,7 +35,7 @@ class HelloWorld {
         String[] possibleCommands = getPossibleCommands();
         output("Possible Commands: ", true);
         for (int i = 0; i < possibleCommands.length; i++)
-          System.out.println("- " + possibleCommands[i]);
+          output("- " + possibleCommands[i], true);
         break;
       case "whoami":
         output("You are " + userName, true);
