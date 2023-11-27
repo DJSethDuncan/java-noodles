@@ -5,8 +5,12 @@ class HelloWorld {
     showGreeting(true);
     String userName = getInput("UserName:");
     output("Hello, " + userName + ". What can I do for you today?", true);
-    String command = getInput("CMD:>");
-    processCommand(command);
+    String command;
+    do {
+      command = getInput("CMD:>");
+      processCommand(command);
+    }
+    while (!command.equals("quit"));
   }
 
   static void showGreeting(Boolean firstVisit) {
@@ -29,6 +33,9 @@ class HelloWorld {
     switch (command) {
       case "help":
         output("Help yourself.", true);
+        break;
+      case "quit":
+        output("See ya, nerd.", true);
         break;
       default:
         output("I don't know what you mean.", true);
