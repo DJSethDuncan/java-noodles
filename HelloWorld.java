@@ -8,7 +8,7 @@ class HelloWorld {
     String command;
     do {
       command = getInput("CMD:>");
-      processCommand(command);
+      processCommand(command, userName);
     }
     while (!command.equals("quit"));
   }
@@ -29,13 +29,19 @@ class HelloWorld {
     return scnr.nextLine();
   }
 
-  static void processCommand(String command) {
+  static void processCommand(String command, String userName) {
     switch (command) {
       case "help":
-        output("Help yourself.", true);
+        String[] possibleCommands = getPossibleCommands();
+        output("Possible Commands: ", true);
+        for (int i = 0; i < possibleCommands.length; i++)
+          System.out.println("- " + possibleCommands[i]);
+        break;
+      case "whoami":
+        output("You are " + userName, true);
         break;
       case "quit":
-        output("See ya, nerd.", true);
+        output("See ya, " + userName + ".", true);
         break;
       default:
         output("I don't know what you mean.", true);
@@ -48,6 +54,11 @@ class HelloWorld {
       System.out.println(text);
     else
       System.out.print(text);
+  }
+
+  static String[] getPossibleCommands () {
+    String[] possibleCommands = new String[]{"help", "whoami", "quit"};
+    return possibleCommands;
   }
 
 }
