@@ -108,7 +108,7 @@ class Survey {
       thisResponse.setId(i * 51);
       thisResponse.setQuestionId(thisQuestion.id);
       thisResponse.setUser(user);
-      thisResponse.setResponse(rand.nextInt(4) + 1);
+      thisResponse.setResponse(rand.nextInt(5) + 1);
       responses.add(thisResponse);
     }
   }
